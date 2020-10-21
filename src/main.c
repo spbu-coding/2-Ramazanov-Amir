@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
     else if (argc >3 ){
         return -2;
     }
-    int from,to;
+    int from = 0,to = 0;
     int from_count=0,to_count =0;
 
     for(int i=1; i<argc;i++){
@@ -37,13 +37,13 @@ int main(int argc, char **argv) {
 
     do {
         scanf("%d%c",&num, &delim);
-        if (num<=from){
+        if (num<=from && from_count > 0){
             fprintf(stdout,"%d ",num);
         }
-        if(num>=to){
+        if(num>=to && to_count > 0){
             fprintf(stderr,"%d ",num);
         }
-        if ((num> from)&&(num<to)) {
+        if ((num> from || from_count == 0)&&(num<to || to_count == 0)) {
             array[size]=num;
             array_cop[size]=num;
             size++;
